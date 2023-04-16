@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+{% load static%}
+{% comment %} <html>
+  <head>
+    <title>Thapar Mess Management</title>
+    {% block css %} <link rel="stylesheet" href="">   {% endblock css %}
+  </head>
+  <body>
+    <header>
+      <img src="{% static 'accounts/images/thapar_logo.png' %}" alt="Thapar Mess Management Logo" style="float:left; width:150px; height: 80px;">
+      <h1 style="margin-left:35px;" align="center;">Thapar Mess Management</p>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="{% url 'profile' %}">Home</a></li>
+        <li><a href="{% url 'profileform' %}">Profile</a></li>
+        <li><a href="{% url 'full_mess' %}">Full Mess Menu</a></li>
+        <li><a href="{% url 'feedback' %}">Feedback</a></li>
+        <li><a href="{% url 'contact' %}">Contacts</a></li>
+        <li><a href="{% url 'logout'%}">Log Out</a></li>
+      </ul>
+    </nav>
+    <main>
+        <section id="table_contacts">
+        <h2>Contacts Info.</h2>
+        <table>
+          <tr>
+            <th>Contacts</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+          </tr>
+          <tr>
+            <td>Warden</td>
+            <td>warden@thapar.edu</td>
+            <td>9876543210</td>
+          </tr>
+          <tr>
+            <td>Caretaker</td>
+            <td>caretaker@thapar.edu</td>
+            <td>9876543210</td>
+          </tr>
+          <tr>
+            <td>Mess Managaer</td>
+            <td>messmanager@thapar.edu</td>
+            <td>9876543210</td>
+          </tr>
+</table></section>
+    </main>
+    <footer>
+      <p>Copyright © 2023 Mess Management</p>
+    </footer>
+  </body>
+</html> {% endcomment %}
+
+
+<html>
+  <head>
+    <title>Thapar Mess Management</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}">
+    
+    <link rel="icon" href="{% static 'accounts/images/thapar_logo_small.png' %}" type="image/icon type">
+  </head>
+  <body>
+    <header>
+      <img src="{% static 'accounts/images/thapar_logo.png' %}" alt="Thapar Mess Management Logo" style="float:left; width:150px; height: 80px;">
+      <h1 style="margin-right:95px;" allign="center;">Thapar Mess Management</p>
+    </header> 
+    <nav>
+      <nav>
+        <ul>
+          <li><a href="{% url 'profile' %}">Home</a></li>
+          <li><a href="{% url 'profileform' %}">Profile</a></li>
+          <li><a href="{% url 'full_mess' %}">Full Mess Menu</a></li>
+          <li><a href="{% url 'feedback' %}">Feedback</a></li>
+          <li><a href="{% url 'contact' %}">Contacts</a></li>
+          
+          <li><a href="{% url 'nighttuck'%}">Night Canteen </a></li>
+          <li><a href="{% url 'logout'%}">Log Out</a></li>
+        </ul>
+      </nav>
+    </nav>
+    <main>
+        <section id="table_contacts">
+        <h2>Contacts Info</h2>
+        <table>
+          <tr>
+            <th>Contacts</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+          </tr>
+          <tr>
+            <td>Warden</td>
+            <td>warden@thapar.edu</td>
+            <td>9876543210</td>
+          </tr>
+          <tr>
+            <td>Caretaker</td>
+            <td>caretaker@thapar.edu</td>
+            <td>9876543210</td>
+          </tr>
+          <tr>
+            <td>Mess Managaer</td>
+            <td>messmanager@thapar.edu</td>
+            <td>9876543210</td>
+          </tr>
+          <tr>
+            <td>Housekeeping Staff</td>
+            <td>housekeeping@thapar.edu</td>
+            <td>9876543210</td>
+          </tr>
+</table></section>
+    </main>
+    <footer>
+      <p>Copyright © 2023 Mess Management</p>
+    </footer>
+  </body>
+</html>

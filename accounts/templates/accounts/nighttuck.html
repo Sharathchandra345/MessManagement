@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Canteen</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+    
+    <link rel="icon" href="/{% static 'accounts/images/thapar_logo_small.png' %}" type="image/icon type">
+</head>
+<body>
+
+    <header>
+        <img src="{% static 'accounts/images/thapar_logo.png' %}" alt="Thapar Mess Management Logo" style="float:left; width:150px; height: 80px;">
+        <h1 style="margin-right:95px;" allign="center;">Thapar Mess Management</p>
+      </header> 
+    <nav>
+        <ul>
+          <li><a href="{% url 'profile' %}">Home</a></li>
+          <li><a href="{% url 'profileform' %}">Profile</a></li>
+          <li><a href="{% url 'full_mess' %}">Full Mess Menu</a></li>
+          <li><a href="{% url 'feedback' %}">Feedback</a></li>
+          <li><a href="{% url 'contact' %}">Contacts</a></li>
+          
+          <li><a href="nighttuck.html">Night Canteen </a></li>
+          <li><a href="{% url 'logout'%}">Log Out</a></li>
+        </ul>
+      </nav>
+
+    <section id="Night_Tuck">
+        <h2> Tuck Shop and Night Canteen</h2>
+        <table>
+          <tr>
+            <th>Items Name</th>
+            
+            <th>Rate</th>
+          </tr>
+          <tr>
+            <td>Aloo Paratha</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>Paneer Paratha</td>
+            <td>30</td>
+          </tr>
+          <tr>
+        <tr>
+            <td>Maggi</td>
+            <td>20</td>
+        </tr>
+            <td>Omlette</td>
+            <td>25</td>
+          </tr>
+          <tr>
+            <td>Hot Milk</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <tr>
+                <td>Cold Milk</td>
+                <td>20</td>
+              </tr>
+            <td>Hot Coffee</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>Cold Coffee</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>Tea</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Ice Tea</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>Cold Drinks</td>
+            <td>20/30</td>
+          </tr>
+          <tr>
+            <td>Chips</td>
+            <td>20</td>
+          </tr>
+          
+          <tr>
+            <td>Biscuits</td>
+            <td>10/20</td>
+          </tr>
+          
+          <tr>
+            <td>Sandwich</td>
+            <td>20</td>
+          </tr>
+          
+          <tr>
+            <td>Macroni</td>
+            <td>20</td>
+          </tr>
+          
+          <tr>
+            <td>Veg Patties</td>
+            <td>10</td>
+          </tr>
+          
+          <tr>
+            <td>Samosa</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Hot Dog</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>Cheese Burger</td>
+            <td>40</td>
+          </tr>
+          <tr>
+            <td>French Fries</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>Spring Roll</td>
+            <td>25</td>
+          </tr>
+          <tr>
+            <td>Pizza</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>Banana Shake</td>
+            <td>35</td>
+          </tr>
+          <tr>
+            <td>Ice Cream</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>Veg Kathi Roll</td>
+            <td>25</td>
+          </tr>
+          <tr>
+            <td>Paneer Kathi Roll</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>Egg Kathi Roll</td>
+            <td>40</td>
+          </tr>
+          <tr>
+            <td>Boiled Egg</td>
+            <td>10</td>
+          </tr>
+          </tr>
+          
+          
+        </table>
+      </section>
+    
+</body>
+<footer>
+    <p>Copyright © 2023 Mess Management</p>
+  </footer>
+</html>

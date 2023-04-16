@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Thapar Mess Management</title>
+    {% block css %} <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">   {% endblock css %}
+  </head>
+  <body>
+    <header>
+        <img src="{% static 'accounts/images/thapar_logo.png' %}" alt="Thapar Mess Management Logo" style="float:left; width:150px; height: 80px;">
+        <h1 style="margin-left:35px;" align="center;">Thapar Mess Management</p>
+      </header>
+    <nav>
+      <ul>
+    
+          <li><a href="{% url 'profile' %}">Home</a></li>
+          <li><a href="{% url 'profileform' %}">Profile</a></li>
+          <li><a href="{% url 'full_mess' %}">Full Mess Menu</a></li>
+          <li><a href="{% url 'feedback' %}">Feedback</a></li>
+          <li><a href="{% url 'contact' %}">Contacts</a></li>
+          
+          <li><a href="nighttuck.html">Night Canteen </a></li>
+          <li><a href="{% url 'logout'%}">Log Out</a></li>
+      
+      </ul>
+    </nav>
+    <main>
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+    
+    <label for="rollno">Roll No:</label>
+    <input type="text" id="rollno" name="roll"><br><br>
+    
+    <label for="course">Course:</label>
+    <input type="text" id="course" name="course"><br><br>
+    
+    <label for="semester">Semester:</label>
+    <input type="text" id="semester" name="semester"><br><br>
+    
+    <label for="contact">Contact No:</label>
+    <input type="text" id="contact" name="contact"><br><br>
+    
+    <label for="photo">Photo:</label>
+    <input type="file" id="prof" name="prof" ><br><br>
+    
+    <label for="messcard">Mess Card Photo:</label>
+    <input required type="file" id="mess" name="mess"><br><br>
+    
+    <input type="submit" value="Submit">
+  </form>

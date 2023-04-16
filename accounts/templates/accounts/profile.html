@@ -1,0 +1,554 @@
+{% comment %} 
+
+<!DOCTYPE html>
+{% load  static %}
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thapar Mess Management</title>
+    {% block css %} <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">   {% endblock css %}
+  </head>
+  <body>
+    {% if messages %}
+    {% for message in messages  %} 
+    <small {%if message.tags%} class="message.tags" {%endif%} >{{message}}</small>
+    {% endfor %}
+   {% endif %}
+    <header>
+      <img src="{% static 'accounts/images/thapar_logo.png' %}"" alt="Thapar Mess Management Logo" style="float:left; width:150px; height: 80px;">
+      <h1 style="margin-left:35px;" align="center;">Thapar Mess Management</p>
+    </header>
+    <nav>
+      <ul>
+          <li><a href="{% url 'profile' %}">Home</a></li>
+          <li><a href="{% url 'profileform' %}">Profile</a></li>
+          <li><a href="{% url 'full_mess' %}">Full Mess Menu</a></li>
+          <li><a href="{% url 'feedback' %}">Feedback</a></li>
+          <li><a href="{% url 'contact' %}">Contacts</a></li>
+          
+          <li><a href="nighttuck.html">Night Canteen </a></li>
+          <li><a href="{% url 'logout'%}">Log Out</a></li>
+      
+      </ul>
+    </nav>
+    <main>
+     
+      <section id="Quotations">
+        <h1>Quote Of The Day</h1>
+       <p> “To me, it’s sort of funny that wasting food is not taboo. It’s one of the last environmental ills that you can just get away with.” – Jonathan Bloom </h4> 
+     </section>
+   
+  <section>
+    <h2>Today's Menu</h2>
+    
+    <table>
+        <tr>
+            <th>Meal</th>
+           <th>Items</th>
+        </tr>
+        <!-- today_meals.html -->
+       
+        <ul>
+   
+          
+         
+        </ul>
+        {% for meal in meals %}
+        <tr>
+            <td> {{ meal.name }}</td>
+            <td>{{meal.description}}</td>
+        </tr>
+         
+        {% empty %}
+          <li>No meals today.</li>
+        {% endfor %}
+       
+    </table>
+</section>
+<style>
+    .eat-btn {
+      background-color: green;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .not-eat-btn {
+      background-color: red;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+  </style>
+  
+  <section id="menu">
+    <h2>Today's Menu</h2>
+    <div style="display: flex;">
+      <div style="flex: 1; padding: 10px;">
+        <p>Breakfast</p>
+        <div>
+          <button class="eat-btn" id="eat_breakfast" name="meal_choice" value="eat_breakfast">I will Eat Breakfast</button><br>
+          <button class="not-eat-btn" id="not_eat_breakfast" name="meal_choice" value="not_eat_breakfast">I will Not Eat Breakfast</button><br>
+        </div>
+      </div>
+      <div style="flex: 1; padding: 10px;">
+        <p>Lunch</p>
+        <div>
+          <button class="eat-btn" id="eat_lunch" name="meal_choice" value="eat_lunch">I will Eat Lunch</button><br>
+          <button class="not-eat-btn" id="not_eat_lunch" name="meal_choice" value="not_eat_lunch">I will Not Eat Lunch</button><br>
+        </div>
+      </div>
+      <div style="flex: 1; padding: 10px;">
+        <p>Dinner</p>
+        <div>
+          <button class="eat-btn" id="eat_dinner" name="meal_choice" value="eat_dinner">I will Eat Dinner</button><br>
+          <button class="not-eat-btn" id="not_eat_dinner" name="meal_choice" value="not_eat_dinner">I will Not Eat Dinner</button><br>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+
+  <section id="schedule">
+    <h2>Meal Schedule</h2>
+    <table>
+      <tr>
+        <th>Meal</th>
+        <th>Time</th>
+      </tr>
+      <tr>
+        <td>Breakfast</td>
+        <td>7:30 AM - 9:00 AM</td>
+      </tr>
+      <tr>
+        <td>Lunch</td>
+        <td>12:30 PM - 2:00 PM</td>
+      </tr>
+      <tr>
+        <td>Dinner</td>
+        <td>7:30 PM - 9:00 PM</td>
+      </tr>
+    </table>
+  </section>
+
+
+  <section id="Laundry">
+    <h2>Others</h2>
+    <table>
+      <tr>
+        <th>Activity</th>
+        
+        <th></th>
+      </tr>
+      <tr>
+        <td>Laundry</td>
+        <td>Monday And Thursday</td>
+      </tr>
+      <tr>
+        <td>Roomcleaning time</td>
+        <td>12 pm to 4:30 pm</td>
+      </tr>
+      
+    </table>
+  </section>
+
+
+</main>
+
+<form action="" method="post">
+  {% csrf_token %}
+  {% for meal in meals %}
+    {% if meal.time_range %}
+      {% if meal.time_range.0 <= current_time <= meal.time_range.1 %}
+        <label>
+          <input type="checkbox" name="{{ meal.name }}" value="1">
+          {{ meal.name }}
+        </label>
+      {% endif %}
+    {% else %}
+      <label>
+        <input type="checkbox" name="{{ meal.name }}" value="1">
+        {{ meal.name }}
+      </label>
+    {% endif %}
+    <br>
+  {% endfor %}
+
+  <button type="submit">Submit</button>
+</form>
+
+{% if checked_meals %}
+  <p>You have selected {{ checked_meals|length }} meals:</p>
+  <ul>
+    {% for meal in checked_meals %}
+      <li>{{ meal }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+<footer>
+  <p>Copyright © 2023 Mess Management</p>
+</footer>
+ </body>
+</html>
+
+
+
+<!-- Responsive Trial -->
+
+<style>
+/* Apply styles to all devices */
+* {
+  box-sizing: border-box;
+}
+/* Add a responsive header */
+header {
+  background-color: maroon;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+/* Add a responsive navigation menu */
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #e29126;
+}
+nav li {
+  float: left;
+}
+nav a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/* Add a responsive main content area */
+main {
+  padding: 16px;
+}
+/* Add a responsive section */
+section {
+  padding: 8px;
+}
+/* Add a responsive table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+/* Add a responsive meal schedule table */
+#schedule table {
+  width: 50%;
+  margin: 0 auto;
+}
+/* Add a responsive image */
+header img {
+  width: 100%;
+  height: auto;
+}
+/* Apply different styles to different screen sizes */
+@media only screen and (max-width: 600px) {
+  /* Change header style */
+  header h1 {
+    font-size: 1.5em;
+  }
+  /* Change navigation menu style */
+  nav a {
+    float: none;
+    width: 100%;
+  }
+  /* Change meal schedule table style */
+  #schedule table {
+    width: 100%;
+  }
+}
+</style> {% endcomment %}
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="{% static 'accounts/images/small.png' %}" type="image/icon type">
+
+    <title>Thapar Mess Management</title>
+    {% block css %}<link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}"> {% endblock css %}
+  </head>
+  <body>
+    {% if messages %}
+    {% for message in messages  %} 
+    <small {%if message.tags%} class="message.tags" {%endif%} >{{message}}</small>
+    {% endfor %}
+   {% endif %}
+    <header>
+      <img src="{% static 'accounts/images/thapar_logo.png' %}" alt="Thapar Mess Management Logo" style="float:left; width:150px; height: 80px;">
+      <h1 style="margin-right:95px;" allign="center;">Thapar Mess Management</p>
+    </header> 
+    <nav>
+      <ul>
+        <li><a href="{% url 'profile' %}">Home</a></li>
+        <li><a href="{% url 'profileform' %}">Profile</a></li>
+        <li><a href="{% url 'full_mess' %}">Full Mess Menu</a></li>
+        <li><a href="{% url 'feedback' %}">Feedback</a></li>
+        <li><a href="{% url 'contact' %}">Contacts</a></li>
+        
+        <li><a href="{% url 'nighttuck'%}">Night Canteen </a></li>
+        <li><a href="{% url 'logout'%}">Log Out</a></li>
+      </ul>
+    </nav>
+    <main>
+
+        <section id="Quotations">
+            <h1>Quote Of The Day</h1>
+           <p> “To me, it’s sort of funny that wasting food is not taboo. It’s one of the last environmental ills that you can just get away with.” – Jonathan Bloom </h4> 
+         </section>
+       
+      <section>
+    
+        <section>
+          <h2>Today's Menu</h2>
+          
+          <table>
+              <tr>
+                  <th>Meal</th>
+                 <th>Items</th>
+              </tr>
+              <!-- today_meals.html -->
+             
+              <ul>
+         
+                
+               
+              </ul>
+              {% for meal in meals %}
+              <tr>
+                  <td> {{ meal.name }}</td>
+                  <td>{{meal.description}}</td>
+              </tr>
+               
+              {% empty %}
+                <li>No meals today.</li>
+              {% endfor %}
+             
+          </table>
+    </section>
+
+  <style>
+		input[type="checkbox"][value="eat"] + label {
+			background-color: green;
+			color: white;
+		}
+		input[type="checkbox"][value="not-eat"] + label {
+			background-color: red;
+			color: white;
+		}
+	</style>
+
+<style>
+  .eat-label {
+    color: green;
+  }
+  .not-eat-label {
+    color: red;
+  }
+</style>
+
+<section id="menu">
+  <h2>Today's Menu</h2>
+  <div style="display: flex;">
+    <div style="flex: 1; padding: 10px;">
+      <p>Breakfast</p>
+      <div>
+        <button class="eat-btn" id="eat_breakfast" name="meal_choice" value="eat_breakfast">I will Eat Breakfast</button><br>
+        <button class="not-eat-btn" id="not_eat_breakfast" name="meal_choice" value="not_eat_breakfast">I will Not Eat Breakfast</button><br>
+      </div>
+    </div>
+    <div style="flex: 1; padding: 10px;">
+      <p>Lunch</p>
+      <div>
+        <button class="eat-btn" id="eat_lunch" name="meal_choice" value="eat_lunch">I will Eat Lunch</button><br>
+        <button class="not-eat-btn" id="not_eat_lunch" name="meal_choice" value="not_eat_lunch">I will Not Eat Lunch</button><br>
+      </div>
+    </div>
+    <div style="flex: 1; padding: 10px;">
+      <p>Dinner</p>
+      <div>
+        <button class="eat-btn" id="eat_dinner" name="meal_choice" value="eat_dinner">I will Eat Dinner</button><br>
+        <button class="not-eat-btn" id="not_eat_dinner" name="meal_choice" value="not_eat_dinner">I will Not Eat Dinner</button><br>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+  function limitCheckboxes(event) {
+    checkboxes.forEach(function(checkbox) {
+      if (checkbox !== event.target) {
+        checkbox.checked = false;
+      }
+    });
+  }
+
+  checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('click', limitCheckboxes);
+  });
+</script>
+      
+    
+    
+      <section id="schedule">
+        <h2>Meal Schedule</h2>
+        <table>
+          <tr>
+            <th>Meal</th>
+            <th>Time</th>
+          </tr>
+          <tr>
+            <td>Breakfast</td>
+            <td>7:30 AM - 9:00 AM</td>
+          </tr>
+          <tr>
+            <td>Lunch</td>
+            <td>12:30 PM - 2:00 PM</td>
+          </tr>
+          <tr>
+            <td>Dinner</td>
+            <td>7:30 PM - 9:00 PM</td>
+          </tr>
+        </table>
+      </section>
+ 
+
+      <section id="Laundry">
+        <h2>Others</h2>
+        <table>
+          <tr>
+            <th>Activity</th>
+            
+            <th></th>
+          </tr>
+          <tr>
+            <td>Laundry</td>
+            <td>Monday And Thursday</td>
+          </tr>
+          <tr>
+            <td>Roomcleaning time</td>
+            <td>12 pm to 4:30 pm</td>
+          </tr>
+          
+        </table>
+      </section>
+
+      <section>
+        <h2>Rules</h2>
+        <ol>
+        <li> Outsiders are not allowed in the mess.Guilty will be fined</li>
+        <br>
+        <li>It is mandatory for the students to carry their mess cards in the mess.</li>
+        <br>
+        <li>Students are not allowed tot ake utensils in their room, guilty will be fined.</li>
+        <br>
+        <li>Taking food outside mess is not allowed.Guilty will be fined</li>
+        <br>
+        </ol>
+      </section>
+
+    </main>
+    <footer>
+      <p>Copyright © 2023 Mess Management</p>
+    </footer>
+  </body>
+ <script src="/main.js"></script>
+</html>
+
+
+
+<!-- Responsive Trial -->
+
+<style>
+    /* Apply styles to all devices */
+    * {
+      box-sizing: border-box;
+    }
+    /* Add a responsive header */
+    header {
+      background-color: maroon;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    /* Add a responsive navigation menu */
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #e29126;
+    }
+    nav li {
+      float: left;
+    }
+    nav a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    /* Add a responsive main content area */
+    main {
+      padding: 16px;
+    }
+    /* Add a responsive section */
+    section {
+      padding: 8px;
+    }
+    /* Add a responsive table */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    /* Add a responsive meal schedule table */
+    #schedule table {
+      width: 50%;
+      margin: 0 auto;
+    }
+    /* Add a responsive image */
+    header img {
+      width: 100%;
+      height: auto;
+    }
+    /* Apply different styles to different screen sizes */
+    @media only screen and (max-width: 600px) {
+      /* Change header style */
+      header h1 {
+        font-size: 1.5em;
+      }
+      /* Change navigation menu style */
+      nav a {
+        float: none;
+        width: 100%;
+      }
+      /* Change meal schedule table style */
+      #schedule table {
+        width: 100%;
+      }
+    }
+  </style>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thapar Mess Management</title>
+    
+    <link rel="icon" href="/Hack TU/thapar logo small.png" type="image/icon type">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}">
+  </head>
+  <body>
+    <header>
+      <img src="{% static 'accounts/images/thapar_logo.png' %}" alt="Thapar Mess Management Logo" style="float:left; width:150px; height: 80px;">
+      <h1 style="margin-left:35px;" allign="center;">Thapar Mess Management</p>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="{% url 'profile' %}">Home</a></li>
+        <li><a href="{% url 'profileform' %}">Profile</a></li>
+        <li><a href="{% url 'full_mess' %}">Full Mess Menu</a></li>
+        <li><a href="{% url 'feedback' %}">Feedback</a></li>
+        <li><a href="{% url 'contact' %}">Contacts</a></li>
+        
+        <li><a href="{% url 'nighttuck'%}">Night Canteen </a></li>
+        <li><a href="{% url 'logout'%}">Log Out</a></li>
+      </ul>
+    </nav>
+    
+       <!-- <img style="width: 98%"; src="/Hack TU/Mess Menu.PNG" alt="">
+   -->
+<style>
+   table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  
+  th, td {
+    width: 25%;
+  }
+
+  
+</style>
+  
+<section>
+   <table>
+    <tr>
+      <th></th>
+      <th>Breakfast</th>
+      <th>Lunch</th>
+      <th>Dinner</th>
+    </tr>
+    <tr>
+      <td>Everyday</td>
+      <td>Butter,Curd,Eggs,
+        Bread(brown),Jam,Milk,
+        Tea,Bournvita,
+        coffee,Cornflakes,
+        Omlette,Egg Bhurji
+        </td>
+      <td>Salad,Jeera Rice</td>
+      <td>Rice,Salad</td>
+    </tr>
+    <tr>
+      <td>Monday</td>
+      <td>Dal Parantha , Banana </td>
+      <td>Kadhi pakoda,Mix Veg,Chappati
+        Curd,Roohafza
+      </td>
+      <td>Paneer Bhurji,Chappati, Dal Moong
+        Saboot,sewaiyan
+        </td>
+    </tr>
+    <tr>
+      <td>Tuesday</td>
+      <td>Aloo Parantha , Namkeen sewaiyan</td>
+      <td>Amritsari Naan,Pindi Chole,Green chutney, Namkeen Lassi</td>
+      <td>Dal makhni,Chappati ,Aalu ghobhi , Gulab Jamun </td>
+    </tr>
+    <tr>
+      <td>Wednesday</td>
+      <td>Paneer Parantha 
+        Pasta(White Sauce)
+        </td>
+      <td>Rajma, Seasonal vegetable,
+        Chappati,Curd,
+        Nimbu pani
+        </td>
+      <td>Kadai Paneer , dal Moongi Masra,
+        Pastry
+        </td>
+    </tr>
+    <tr>
+      <td>Thursday</td>
+      <td>Onion Parantha 
+        Grill sandwich
+        </td>
+      <td>Pav Bhaji,
+        Jal Jeera
+        </td>
+      <td>Maah Chana Dal , Chappari , 
+        Ice Cream , Arbi
+        </td>
+    </tr>
+    <tr>
+      <td>Friday</td>
+      <td>Mix Parantha , 
+        Channa chat
+        </td>
+      <td>Black Channa , Nutrie, Chappati , 
+        Bondi Raita
+        </td>
+      <td>Aloo gajar,
+        Lobia,Chappati , Jalebi
+        </td>
+    </tr>
+    <tr>
+      <td>Saturday</td>
+      <td>Cutlet, Aloo Parantha </td>
+      <td>Matar Paneer ,Dal saboot Masoor,
+        Chappati, Tang
+        </td>
+      <td>Dumaloo,Moong Dhulidal, Kheer</td>
+    </tr>
+    <tr>
+      <td>Sunday</td>
+      <td>Paneer Parantha , Poha </td>
+      <td>Chole Bhature , Green Chutney , Meethi lassi </td>
+      <td>Seasonal Veg, Arhar Dal ,
+        Aateka halwa 
+        </td>
+    </tr>
+  </table>
+</section>
+
+    </body>
+    
+    <footer>
+      <p>Copyright © 2023 Mess Management</p>
+    </footer>
+    </html>
